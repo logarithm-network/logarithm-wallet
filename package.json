@@ -1,8 +1,8 @@
 {
-    "name": "storj-wallet",
+    "name": "logarithm-wallet",
     "version": "0.0.1",
-    "description": "A minimal Ethereum wallet for Storj",
-    "author": "Hunter Long <info@socialeck.com>",
+    "description": "Logarithm Token Wallet from Logarithm Network",
+    "author": "Logarithm Network <info@Logarithm.network>",
     "main": "main.js",
     "scripts": {
         "start": "electron .",
@@ -10,29 +10,36 @@
         "dist": "electron-builder"
     },
     "build": {
-        "appId": "com.storjwallet",
-        "productName": "Storj Wallet",
+        "appId": "com.wallet.logarithm",
+        "productName": "Logarithm Token Wallet",
         "mac": {
-            "category": "your.app.category.type"
+            "category": "wallet.wallet.category.type"
         },
         "linux": {
             "target": [
                 "deb"
             ]
         },
-        "win": {}
+        "win": {
+          "icon" : "app/build/icon.ico"
+        }
     },
     "repository": "https://github.com/electron/electron-quick-start",
     "keywords": [
-        "storj",
-        "storj-wallet"
+        "logarithm",
+        "lgr",
+        "lgr token",
+        "erc20",
+        "logarithm-wallet"
     ],
     "license": "MIT",
     "devDependencies": {
-        "electron": "~1.6.2",
-        "electron-builder": "^19.11.1"
+        "electron": "^2.0.1",
+        "electron-builder": "^19.11.1",
+        "electron-packager": "^12.0.2"
     },
     "dependencies": {
+        "ajv": "^6.5.0",
         "clipboardy": "^1.1.4",
         "ethers": "^2.1.1"
     }

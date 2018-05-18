@@ -2,79 +2,84 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Logarithm Wallet</title>
+    <title>Logarithm Token Wallet</title>
     <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="style/logarithm.css">
 </head>
 <body class="disable-selection">
-    <div class="draggable"></div>
+    <div class="draggable">Logarithm Token Wallet</div>
     <button type="button" onclick="QuitAppButton();" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <img src="images/logarithm.png" class="logo">
-    <div class="options text-center">
-        <button class="btn btn-primary" onclick="UseKeystore();">Use Keystore JSON</button>
-        <button class="btn btn-info" onclick="UsePrivateKey();">Use Private Key</button>
-        <button class="btn btn-warning" onclick="OpenMyEtherWallet();">Create New Wallet</button>
-    </div>
 
-    <div class="row walletInfo hidden">
-
-        <div class="col-xs-4 col-xs-offset-2 coinBox">
-            <b id="storjbal">0</b>LGR
+    <div class="row" style="margin: 50px 0 0 0;">
+      <div class="col-xs-4 text-center">
+        <img src="images/logarithm.logo.png" class="img-thumbnail img-responsive">
+      </div>
+      <div class="col-xs-8 text-center">
+        <div class="options text-center">
+            <button class="btn btn-primary btn-block btn-lg" onclick="UseKeystore();">Use Keystore JSON</button><br>
+            <button class="btn btn-info btn-block btn-lg" onclick="UsePrivateKey();">Use Private Key</button><br>
+            <button class="btn btn-warning btn-block btn-lg" onclick="OpenMyEtherWallet();">Create New Wallet</button>
         </div>
-
-        <div class="col-xs-4 coinBox">
-            <b id="ethbal">0</b>ETH
+        <div id="walletInfo" class="row walletInfo hidden">
+            <div class="col-xs-12 coinBox">
+                <div class="msg msg-info"><b id="lgrbalance">0</b> LGR</div>
+            </div>
+            <div class="col-xs-12 coinBox">
+                <div class="msg msg-primary"><b id="ethbal">0</b> ETH</div>
+            </div>
+            <div class="col-xs-12">
+                <div class="msg msg-magick"><span class="myaddress" onclick="CopyAddress();">0x</span></div>
+            </div>
         </div>
-
+      </div>
     </div>
 
     <div id="addressArea" class="row hidden">
-        <span class="myaddress" onclick="CopyAddress();">0x</span>
+        <span class="myaddress" style="font-size: 20pt;margin: 40px 0;color: #2583ff; font-weight: bold;" onclick="CopyAddress();">0x</span>
     </div>
 
     <div id="walletActions" class="row hidden">
-
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#storjmodal" onclick="UpdateTokenFeeETH();">
-            Send LGR
-          </button>
-
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ethermodal" onclick="UpdateAvailableETH();">
-            Send ETH
-          </button>
-
+      <div class="row">
+        <div class="col-xs-5">
+          <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#storjmodal" onclick="UpdateTokenFeeETH();"><img src="images/logarithm.logo.png" class="img-circle" style="width:20px; height:20px"> Send LGR</button>
+        </div>
+        <div class="col-xs-5">
+          <button type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#ethermodal" onclick="UpdateAvailableETH();"><img src="images/ethereum.logo.png" class="img-circle" style="width:20px; height:20px"> Send ETH</button>
+        </div>
+        <div class="col-xs-2">
+          <button type="button" class="btn btn-danger btn-lg pull-right" onclick="LogoutWallet();">Logout</button>
+        </div>
+      </div>
     </div>
 
-
-    <div class="walletInput col-xs-7 col-xs-offset-3">
+    <div id="WalletGetInputs" class="walletInput col-xs-8 col-xs-offset-2">
 
         <div id="keystoreupload" class="hidden">
+          <div class="msg msg-primary">
             <div class="form-group">
-                <label for="exampleInputEmail1">Keystore JSON File</label>
+                <label for="exampleInputEmail1">Keystore JSON File: </label>
                 <button onclick="OpenKeystoreFile();">Open Keystore File</button>
             </div>
             <div class="form-group">
-                <label for="walletpass">Wallet Password</label>
+                <label for="walletpass">Wallet Password: </label>
                 <input type="password" class="form-control" id="keystorewalletpass" placeholder="Ethereum Wallet Keystore Password">
             </div>
-            <button type="submit" class="btn btn-default" id="keystorebtn" onclick="UnlockWalletKeystore();">Open</button> <p class="errorInfo text-info pull-right" id="keystorejsonerror">Incorrect Password for Keystore Wallet</p>
+            <button type="submit" class="btn btn-default" id="keystorebtn" onclick="UnlockWalletKeystore();">Open Wallet</button> <p class="errorInfo text-info pull-right" id="keystorejsonerror">Incorrect Password for Keystore Wallet</p>
+          </div>
         </div>
 
         <div id="privatekey" class="hidden">
+          <div class="msg msg-info">
             <div class="form-group">
-                <label for="walletpass">Wallet Private Key</label>
+                <label for="walletpass">Wallet Private Key: </label>
                 <input type="password" class="form-control" id="privatepass" placeholder="Ethereum Private Key">
             </div>
-            <button type="submit" class="btn btn-default" onclick="OpenPrivateKey();">Open</button> <p class="errorInfo text-info pull-right" id="privatekeyerror">Invalid Ethereum Wallet Private Key</p>
+            <button type="submit" class="btn btn-default" onclick="OpenPrivateKey();">Open Wallet</button> <p class="errorInfo text-info pull-right" id="privatekeyerror">Invalid Ethereum Wallet Private Key</p>
+          </div>
         </div>
 
     </div>
-
-
-
-
-
-
-    <link rel="stylesheet" href="main.css">
 
 
     <script>
@@ -171,15 +176,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">About Logarithm Wallet</h4>
+                    <h4 class="modal-title" id="myModalLabel">About Logarithm Token Wallet</h4>
                 </div>
                 <div class="modal-body">
 
-                  A simple Ethereum Wallet based on Logarithm ERC20 Token. Send a Receive ETH and Logarithm with ease and security. Ethereum wallets are decrypted and raw transactions are signed locally. Raw Transactions are sent directly to EtherScan.io. This application is not an official release from Storj, just a opensource wallet for Storj Token holders. Wallet Private Keys are kept on your local machine, everytime you want to use this wallet you must re-use the Keystore JSON or Private Key for your wallet.
+                  A simple Ethereum Wallet based on Logarithm ERC20 Token. Send a Receive Ethereum (ETH) and Logarithm Token (LGR) with ease and security. Ethereum wallets are decrypted and raw transactions are signed locally. Raw Transactions are sent directly to EtherScan.io. Wallet Private Keys are kept on your local machine, everytime you want to use this wallet you must re-use the Keystore JSON or Private Key for your wallet.
 
                     <p></p>
 
-                    <a href="#" onclick="CheckForUpdates()">Check for Updates</a> | <a href="#" onclick="OpenGithubRepo()">Logarithm Wallet Github</a> | Developed by <a href="#" onclick="OpenHunterGithub()">Hunter Long</a>
+                    <a href="#" onclick="CheckForUpdates()">Check for Updates</a> | <a href="#" onclick="OpenGithubRepo()">Logarithm Wallet Github</a> | Developed by <a href="#" onclick="OpenHunterGithub()">Logarithm Network</a>, Hunter Long
 
                 </div>
                 <div class="modal-footer">
@@ -210,7 +215,7 @@
   </div>
 </div>
 
-    <span class="about" data-toggle="modal" data-target="#aboutmodal">About v0.0.1</span>
+    <span class="about" data-toggle="modal" data-target="#aboutmodal">LGR Wallet About</span>
 
 </body>
 

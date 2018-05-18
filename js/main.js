@@ -27,15 +27,15 @@ function OpenEtherScan(txid) {
 }
 
 function OpenGithubRepo() {
-  shell.openExternal('https://github.com/hunterlong/storj-wallet')
+  shell.openExternal('https://github.com/logarithm-network/logarithm-wallet')
 }
 
 function OpenGithubReleases() {
-  shell.openExternal('https://github.com/hunterlong/storj-wallet/releases')
+  shell.openExternal('https://github.com/logarithm-network/logarithm-wallet/releases')
 }
 
 function OpenHunterGithub() {
-  shell.openExternal('https://github.com/hunterlong')
+  shell.openExternal('https://logarithm.network')
 }
 
 function OpenMyEtherWallet() {
@@ -43,22 +43,23 @@ function OpenMyEtherWallet() {
 }
 
 function CheckForUpdates() {
-  var versionFile = "https://raw.githubusercontent.com/hunterlong/storj-wallet/master/VERSION";
+  var versionFile = "https://raw.githubusercontent.com/logarithm-network/logarithm-wallet/master/VERSION";
   $.get(versionFile, function(data, status){
       var verCheck = data.replace(/^\s+|\s+$/g, '');
         if (version != verCheck) {
-          alert("There's a new Update for Storj Wallet! New Version: "+data);
+          alert("There's a new Update for Logarithm Token Wallet! New Version: "+data);
           OpenGithubReleases();
         } else {
-          alert("You have the most current version");
+          alert("You have lastest Logarithm Token Wallet.");
         }
     });
 }
 
 function CheckETHAvailable() {
-    var send = $("#send_ether_amount").val();
-    var fee = $("#ethtxfee").val();
-    var spendable = ethBalance - (send - fee);
+    var send = parseFloat($("#send_ether_amount").val());
+    var fee = parseFloat($("#ethtxfee").val());
+    var spendable = parseFloat(ethBalance - (send + fee));
+    console.log('CheckETH:: ETHBalance:'+ethBalance+', Send:'+send+', Fee:'+fee+', Spendable:'+spendable);
     if (spendable >= 0) {
         $("#sendethbutton").prop("disabled", false);
     } else {
@@ -67,10 +68,12 @@ function CheckETHAvailable() {
 }
 
 function CheckTokenAvailable() {
-    var send = $("#send_amount_token").val();
-    var fee = $("#tokentxfee").val();
-    var spendable = tokenBalance - (send - fee);
-    if (spendable >= 0) {
+    var send = parseFloat($("#send_amount_token").val());
+    var fee = parseFloat($("#tokentxfee").val());
+    var spendable = parseFloat(ethBalance - fee);
+    var gidecektoken  = tokenBalance - parseFloat($("#send_amount_token").val());
+    console.log('CheckToken:: ETHBalance:'+ethBalance+', Send:'+send+', Fee:'+fee+', Spendable:'+spendable);
+    if (spendable >= 0 && gidecektoken>=0) {
         $("#sendtokenbutton").prop("disabled", false);
     } else {
         $("#sendtokenbutton").prop("disabled", true);
@@ -110,9 +113,22 @@ function HideButtons() {
     $("#privatekey").attr("class", "hidden");
 }
 
+function LogoutWallet() {
+  $("#walletInfo").addClass("hidden");
+  $("#addressArea").addClass("hidden");
+  $("#walletActions").addClass("hidden");
+  $("#WalletGetInputs").removeClass("hidden");
+  $("#keystoreupload").addClass("hidden");
+  $("#createnewwallet").addClass("hidden");
+  $("#privatekey").addClass("hidden");
+  $(".options").show();
+  $(".walletInput").show();
+}
+
 
 function QuitAppButton() {
-    app.on('window-all-closed', app.quit);
+  const remote = require('electron').remote
+  remote.getCurrentWindow().close()
 }
 
 
@@ -152,12 +168,7 @@ function updateBalance() {
         var etherString = ethers.utils.formatEther(balance);
         console.log("ETH Balance: " + etherString);
         var n = parseFloat(etherString);
-        var ethValue = n.toLocaleString(
-            undefined, // use a string like 'en-US' to override browser locale
-            {
-                minimumFractionDigits: 4
-            }
-        );
+        var ethValue = Number.parseFloat(n).toFixed(8);
         var messageEl = $('#ethbal');
         var split = ethValue.split(".");
         ethBalance = parseFloat(ethValue);
@@ -168,15 +179,10 @@ function updateBalance() {
 
     callPromise.then(function(result) {
         var trueBal = result[0].toString(10);
-        var messageEl = $('#storjbal');
+        var messageEl = $('#lgrbalance');
         var n = trueBal * 0.00000001;
-        console.log("STORJ Balance: " + n);
-        var atyxValue = n.toLocaleString(
-            undefined, // use a string like 'en-US' to override browser locale
-            {
-                minimumFractionDigits: 4
-            }
-        );
+        console.log("LGR Balance: " + n);
+        var atyxValue =  Number.parseFloat(n).toFixed(8);
 
         var split = atyxValue.split(".");
         tokenBalance = parseFloat(atyxValue);
@@ -340,7 +346,7 @@ function SendToken(callback) {
             $(".txidLink").attr("onclick", "OpenEtherScan('"+txid.hash+"')");
             $("#senttxamount").html(amount);
             $("#txtoaddress").html(to);
-            $("#txtype").html("STORJ");
+            $("#txtype").html("LGR");
             $('#trxsentModal').modal('show');
             updateBalance();
         });

@@ -5,4 +5,101 @@
   -webkit-user-select: none; /* Chrome, Safari, and Opera */
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
-body { background: #2A3F54; }
+body { background: #E3F2FD; }
+.row {  margin-left: 0; margin-right: 0; }
+img{-webkit-user-drag: none;}
+.logo {
+    display: block;
+    margin: 30px auto;
+    padding: 50px;
+}
+.draggable {
+    width: 100%;
+    height: 25px;
+    display: block;
+    position: absolute;
+    background-color: #42A5F5;
+    top: 0;
+    line-height: 25px;
+    padding-left: 10px;
+    color: #FFFFFF;
+    font-weight: bold;
+    -webkit-user-select: none;
+    cursor: all-scroll;
+    -webkit-app-region: drag;
+}
+.close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    color: #2583ff;
+    opacity: 0.3;
+    font-size: 20pt;
+}
+
+.coinBox {
+    text-align: center;
+}
+
+.coinBox b {
+    font-size: 32pt;
+    font-weight: bold;
+}
+
+.coinBox small {
+    font-size: 18pt;
+    color: #6f6f6f;
+}
+.msg {
+    background: #fefefe;
+    padding: 12px;
+    padding-left: 16px;
+    border-top: solid 3px #CCCCCC;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+       -moz-box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+            box-shadow: 0 10px 10px -5px rgba(0,0,0,.08);
+}
+.msg-clear {
+    border-color: #fefefe;
+    -webkit-box-shadow: 0 7px 10px -5px rgba(0,0,0,.15);
+       -moz-box-shadow: 0 7px 10px -5px rgba(0,0,0,.15);
+            box-shadow: 0 7px 10px -5px rgba(0,0,0,.15);
+}
+.msg-info {
+    border-color: #b8dbf2;
+}
+.msg-success {
+    border-color: #cef2b8;
+}
+.msg-warning {
+    border-color: rgba(255,165,0,.5);
+}
+.msg-danger {
+    border-color: #ec8282;
+}
+.msg-primary {
+    border-color: #9ca6f1;
+}
+.msg-magick {
+    border-color: #e0b8f2;
+}
+.msg-info-text {
+    color: #39b3d7;
+}
+.msg-success-text {
+    color: #80d651;
+}
+.msg-warning-text {
+    color: #db9e34;
+}
+.msg-danger-text {
+    color: #c9302c;
+}
+.msg-primary-text {
+    color: rgba(47,106,215,.9);
+}
+.msg-magick-text {
+    color: #bb39d7;
+}
