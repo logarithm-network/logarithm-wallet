@@ -23,5 +23,5 @@ This Logarithm Token Wallet will allow you to set a custom Gas Price if you need
 
 
 - [Logarithm Token Contract](https://etherscan.io/token/0x2eb86e8fc520e0f6bb5d9af08f924fe70558ab89)
-- [Logarithm Token Website Ethereum Transaction](https://getlogarithm.com)
+- [Logarithm Token Website](https://getlogarithm.com)
 - [Logarithm Network](https://logarithm.network)
