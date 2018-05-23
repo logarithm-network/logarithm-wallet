@@ -21,7 +21,7 @@
             ]
         },
         "win": {
-          "icon" : "app/build/icon.ico"
+            "icon": "app/build/icon.ico"
         }
     },
     "repository": "https://github.com/electron/electron-quick-start",
