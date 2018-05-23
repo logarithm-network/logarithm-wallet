@@ -1,5 +1,12 @@
 ![Logarithm](https://image.ibb.co/gwnFao/Logarithm_Logo_Text.png)
 
+[![GitHub issues](https://img.shields.io/github/issues/logarithm-network/logarithm-wallet.svg?style=flat-square)](https://github.com/logarithm-network/logarithm-wallet/issues)
+[![GitHub stars](https://img.shields.io/github/stars/logarithm-network/logarithm-wallet.svg?style=flat-square)](https://github.com/logarithm-network/logarithm-wallet/stargazers)
+[![GitHub license](https://img.shields.io/github/license/logarithm-network/logarithm-wallet.svg?style=flat-square)](https://github.com/logarithm-network/logarithm-wallet/blob/master/LICENSE)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/logarithm-network/logarithm-wallet.svg?style=flat-square)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Flogarithm-network%2Flogarithm-wallet)
+[![Twitter Follow](https://img.shields.io/twitter/follow/getLogarithm.svg?style=flat-square&label=Follow)](https://twitter.com/getLogarithm)
+
+
 # Logarithm Token Wallet
 A simple Ethereum Wallet based on Logarithm ERC20 Token. Send a Receive Ethereum (ETH) and Logarithm Token (LGR) with ease and security. Ethereum wallets are decrypted and raw transactions are signed locally. Raw Transactions are sent directly to EtherScan.io. Wallet Private Keys are kept on your local machine, everytime you want to use this wallet you must re-use the Keystore JSON or Private Key for your wallet.
 
