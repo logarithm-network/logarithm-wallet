@@ -83,7 +83,15 @@ function CheckTokenAvailable() {
 
 setInterval(function() {
     if (myWallet) updateBalance();
+    GetBlock();
 }, 5000);
+
+function GetBlock() {
+  provider.getBlockNumber().then(function(blockNumber) {
+    $("#EthBlock").html(blockNumber);
+    console.log("Current block number: " + blockNumber);
+  });
+}
 
 function UseKeystore() {
     HideButtons();
