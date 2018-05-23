@@ -11,7 +11,7 @@ var myWallet;
 
 var tokenBalance = 0;
 var ethBalance = 0;
-var version = "0.0.1";
+var version = "0.0.2";
 
 var provider = new providers.EtherscanProvider(false);
 
