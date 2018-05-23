@@ -7,7 +7,7 @@
     "scripts": {
         "start": "electron .",
         "pack": "electron-builder --dir",
-        "dist": "electron-builder"
+        "dist": "build -wl"
     },
     "build": {
         "appId": "com.wallet.logarithm",
@@ -21,7 +21,7 @@
             ]
         },
         "win": {
-            "icon": "app/build/icon.ico"
+            "icon": "build/icon.ico"
         }
     },
     "repository": "https://github.com/electron/electron-quick-start",
