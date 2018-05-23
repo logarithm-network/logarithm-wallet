@@ -10,9 +10,7 @@
 # Logarithm Token Wallet
 A simple Ethereum Wallet based on Logarithm ERC20 Token. Send a Receive Ethereum (ETH) and Logarithm Token (LGR) with ease and security. Ethereum wallets are decrypted and raw transactions are signed locally. Raw Transactions are sent directly to EtherScan.io. Wallet Private Keys are kept on your local machine, everytime you want to use this wallet you must re-use the Keystore JSON or Private Key for your wallet.
 
-![Logarithm Token Wallet](https://image.ibb.co/ncbbWT/logarithm_wallet_1.png)
-
-> **Note:** This Wallet is very new! Treat it as BETA!
+![Logarithm Token Wallet](https://scontent.fbtz1-9.fna.fbcdn.net/v/t1.0-9/33095526_387613711724106_1070504427976130560_n.png?_nc_cat=0&oh=7eeae1886d5edec38b3f219c28efe671&oe=5B768E84)
 
 ## Logarithm Token Wallet Release
 [Download Lastest Release](https://github.com/logarithm-network/logarithm-wallet/releases)
