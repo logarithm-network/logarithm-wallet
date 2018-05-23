@@ -44,6 +44,13 @@ body {
     color: #666;
     cursor: pointer;
 }
+.lastblock {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    color: #666;
+    cursor: pointer;
+}
 .myaddress {
     cursor: pointer;
 }
