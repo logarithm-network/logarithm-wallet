@@ -42,7 +42,7 @@
     <div id="walletActions" class="row hidden">
       <div class="row">
         <div class="col-xs-5">
-          <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#storjmodal" onclick="UpdateTokenFeeETH();"><img src="images/logarithm.logo.png" class="img-circle" style="width:20px; height:20px"> Send LGR</button>
+          <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#lgrmodal" onclick="UpdateTokenFeeETH();"><img src="images/logarithm.logo.png" class="img-circle" style="width:20px; height:20px"> Send LGR</button>
         </div>
         <div class="col-xs-5">
           <button type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#ethermodal" onclick="UpdateAvailableETH();"><img src="images/ethereum.logo.png" class="img-circle" style="width:20px; height:20px"> Send ETH</button>
@@ -63,7 +63,7 @@
             </div>
             <div class="form-group">
                 <label for="walletpass">Wallet Password: </label>
-                <input type="password" class="form-control" id="keystorewalletpass" placeholder="Ethereum Wallet Keystore Password">
+                <input type="password" class="form-control lgrinput" id="keystorewalletpass" placeholder="Ethereum Wallet Keystore Password">
             </div>
             <button type="submit" class="btn btn-default" id="keystorebtn" onclick="UnlockWalletKeystore();">Open Wallet</button> <p class="errorInfo text-info pull-right" id="keystorejsonerror">Incorrect Password for Keystore Wallet</p>
           </div>
@@ -73,7 +73,7 @@
           <div class="msg msg-info">
             <div class="form-group">
                 <label for="walletpass">Wallet Private Key: </label>
-                <input type="password" class="form-control" id="privatepass" placeholder="Ethereum Private Key">
+                <input type="password" class="form-control lgrinput" id="privatepass" placeholder="Ethereum Private Key">
             </div>
             <button type="submit" class="btn btn-default" onclick="OpenPrivateKey();">Open Wallet</button> <p class="errorInfo text-info pull-right" id="privatekeyerror">Invalid Ethereum Wallet Private Key</p>
           </div>
@@ -99,17 +99,13 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" id="send_ether_to" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="0x0000000000000000000000000000000000000000">
-                            <span class="input-group-addon">Address</span>
-                        </div>
+                        <label class="lgrinputlabel">Recipient Address</label>
+                        <input type="text" id="send_ether_to" class="form-control lgrinput" aria-label="Amount (to the nearest dollar)" placeholder="0x...">
                     </div>
 
                     <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" id="send_ether_amount" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="0.0" onkeyup="CheckETHAvailable();">
-                            <span class="input-group-addon">ETH</span>
-                        </div>
+                        <label class="lgrinputlabel">ETH<span class="pull-right"><a href="javascript:;" onclick="SendMaxBtn();">Send max</a></span></label>
+                        <input type="text" id="send_ether_amount" class="form-control lgrinput" aria-label="Amount (to the nearest dollar)" placeholder="0.0" onkeyup="CheckETHAvailable();">
                         <p class="help-block"><u class="ethspend">0.0</u> ETH Available | Gas Limit: 21000</p>
                     </div>
                 </div>
@@ -130,7 +126,7 @@
 
 
 
-    <div class="modal fade" id="storjmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="lgrmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -139,18 +135,14 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" id="send_to_token" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="0x0000000000000000000000000000000000000000">
-                            <span class="input-group-addon">Address</span>
-                        </div>
+                        <label class="lgrinputlabel">Recipient Address</label>
+                        <input type="text" id="send_to_token" class="form-control lgrinput" aria-label="Amount (to the nearest dollar)" placeholder="0x...">
                     </div>
 
                     <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" id="send_amount_token" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="0.0" onkeyup="CheckTokenAvailable();">
-                            <span class="input-group-addon">LGR</span>
-                        </div>
-                        <p class="help-block"><u class="storjspend">0.0</u> LGR Available | <u class="ethavailable">0.0</u> ETH Available | Gas Limit: 65000</p>
+                        <label class="lgrinputlabel">LGR<span class="pull-right"><a href="javascript:;" onclick="SendMaxLgr();">Send max</a></span></label>
+                        <input type="text" id="send_amount_token" class="form-control lgrinput" aria-label="Amount (to the nearest dollar)" placeholder="0.0" onkeyup="CheckTokenAvailable();">
+                        <p class="help-block"><u class="lgrspend">0.0</u> LGR Available | <u class="ethavailable">0.0</u> ETH Available | Gas Limit: 65000</p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -224,21 +216,10 @@
             			</ul>
 
             			<ul class="social-buttons pull-right">
-            				<li>
-            					<a href="javascript:;" onclick="shell.openExternal('https://twitter.com/getlogarithm');" class="btn btn-icon btn-neutral btn-twitter">
-            						<img src="images/twitter.png" class="img-responsive">
-            					</a>
-            				</li>
-            				<li>
-            					<a href="javascript:;" onclick="shell.openExternal('https://facebook.com/getlogarithm');" class="btn btn-icon btn-neutral btn-dribbble">
-            						<img src="images/facebook.png" class="img-responsive">
-            					</a>
-            				</li>
-            				<li>
-            					<a href="javascript:;" onclick="shell.openExternal('https://github.com/logarithm-network');" class="btn btn-icon btn-neutral btn-google">
-            						<img src="images/github.png" class="img-responsive">
-            					</a>
-            				</li>
+                    <li><a href="javascript:;" onclick="shell.openExternal('https://logarithm.network');" class="btn btn-icon btn-neutral btn-twitter"><img src="images/logarithm.logo.png" class="img-responsive"  style="width:32px;"></a></li>
+                    <li><a href="javascript:;" onclick="shell.openExternal('https://twitter.com/getlogarithm');" class="btn btn-icon btn-neutral btn-twitter"><img src="images/twitter.png" class="img-responsive"></a></li>
+            				<li><a href="javascript:;" onclick="shell.openExternal('https://facebook.com/getlogarithm');" class="btn btn-icon btn-neutral btn-dribbble"><img src="images/facebook.png" class="img-responsive"></a></li>
+            				<li><a href="javascript:;" onclick="shell.openExternal('https://github.com/logarithm-network');" class="btn btn-icon btn-neutral btn-google"><img src="images/github.png" class="img-responsive"></a></li>
             			</ul>
 
             		</div>

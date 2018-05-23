@@ -194,7 +194,7 @@ function updateBalance() {
 
         var split = atyxValue.split(".");
         tokenBalance = parseFloat(atyxValue);
-        $(".storjspend").html(atyxValue)
+        $(".lgrspend").html(atyxValue)
         messageEl.html(split[0] + ".<small>" + split[1] + "</small>");
 
     });
@@ -331,7 +331,23 @@ function UpdateTokenFeeETH() {
     });
 }
 
+function SendMaxBtn() {
+  UpdateAvailableETH();
+  var sendx = parseFloat($("#send_ether_amount").val());
+  var feex = parseFloat($("#ethtxfee").val());
+  var spendablex = parseFloat(ethBalance - feex);
+  console.log('Max: '+spendablex);
+  $('#send_ether_amount').val(spendablex);
+  CheckETHAvailable();
+}
 
+function SendMaxLgr() {
+  UpdateAvailableETH();
+  var spendablexlgr = parseFloat(tokenBalance);
+  console.log('Max LGR: '+spendablexlgr);
+  $('#send_amount_token').val(spendablexlgr);
+  CheckTokenAvailable();
+}
 
 function SendToken(callback) {
     var to = $('#send_to_token').val();
@@ -347,7 +363,7 @@ function SendToken(callback) {
             gasLimit: 65000,
         }).then(function(txid) {
             console.log(txid);
-            $('#storjmodal').modal('hide')
+            $('#lgrmodal').modal('hide')
             $("#sendtokenbutton").prop("disabled", false);
 
             $(".txidLink").html(txid.hash);

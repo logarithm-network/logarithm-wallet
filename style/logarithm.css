@@ -127,3 +127,27 @@ img{-webkit-user-drag: none;}
 .footer ul li {
     display: inline-block;
 }
+.lgrinput {
+    width: 100%;
+    margin-top: 8px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 3px 6px 0px, rgba(50, 50, 93, 0.02) 0px 0px 1px 0px, rgba(59, 59, 92, 0.08) 0px 5px 10px 0px;
+    background: rgb(255, 255, 255);
+    padding: 12px;
+    border-width: initial;
+    border-color: initial;
+    border-image: initial;
+    border-style: none;
+    border-radius: 8px;
+    outline: none;
+}
+.lgrinputlabel {color: rgb(169, 169, 188);
+    font-size: 13px;
+    font-weight: 600;
+    width: 100%;
+    opacity: 1;}
